@@ -72,7 +72,8 @@ class FileWriter
 
   def field_info
     #[ size of fields descriptors, field size definitions ]
-    [(@fields.size * 32 + 33), (@fields.values.reduce(1) { |sum, field| sum + field.length})]
+   # [(@fields.size * 32 + 33), (@fields.values.reduce(1) { |sum, field| sum + field.length})]
+    [(@fields.size * 32 + 33), (@fields.values.inject(1) {|sum, n|  sum+n.length } )]
   end
 
   def row_data

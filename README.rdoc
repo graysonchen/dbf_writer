@@ -15,6 +15,24 @@ It's inspired on the DbfExporter library for .NET
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
+== EXAMPLE
+
+require 'rubygems'
+require 'dbf_writer'
+subject = FileWriter.new
+subject.add_field 'data1'
+subject.add_row 'FIELD_DATA_USED'
+subject.add_row 'SECOND_ROW_DATA'
+subject.add_field 'data2'
+subject.add_row 'FIELD_DATA_USED2'
+subject.add_row 'SECOND_ROW_DATA2'
+value = subject.to_binary_string
+
+File.open(filename="test.dbf", 'w') do |dbf|
+  dbf.write(value)
+end
+
+
 == Copyright
 
 Copyright (c) 2010 Mereghost. See LICENSE.txt for further details.
